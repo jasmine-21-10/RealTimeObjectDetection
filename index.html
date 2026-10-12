@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Object Detection</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <header>
+        <h1>Real-Time Object Detection</h1>
+        <p>AI-powered object detection using YOLO</p>
+    </header>
+    
+<section class="upload-card">
+    <h2>Upload Image for Detection</h2>
+
+    <form id="uploadForm">
+        <input
+            type="file"
+            id="imageInput"
+            name="image"
+            accept="image/png,image/jpeg,image/webp"
+            required
+        >
+
+        <button type="submit" id="uploadButton">
+            Detect Objects
+        </button>
+    </form>
+
+    <p id="uploadStatus"></p>
+
+    <div id="uploadResult" hidden>
+        <h3>Detection Result</h3>
+        <img id="resultImage" src="" alt="Detected objects">
+
+        <p>
+            Total Objects:
+            <strong id="uploadObjectCount">0</strong>
+        </p>
+
+        <h3>Detected Objects and Confidence</h3>
+        <ul id="detectionList"></ul>
+    </div>
+</section>
+<section class="upload-card">
+    <h2>Detection History</h2>
+    <div id="historyList"></div>
+</section>
+    <main class="dashboard">
+        <section class="camera-card">
+            <h2>Live Detection</h2>
+
+            <div class="video-container">
+                <img src="{{ url_for('video_feed') }}"
+                     alt="Live object detection feed">
+            </div>
+            
+<div class="stats-container">
+    <div class="stat-card">
+        <h3>Objects Detected</h3>
+        <p id="objectCount">0</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>Detection Mode</h3>
+        <p>YOLO Live</p>
+    </div>
+    <div class="stat-card">
+    <h3>Detected Classes</h3>
+    <p id="detectedClasses">None</p>
+</div>
+
+    <div class="stat-card">
+        <h3>Model Status</h3>
+        <p class="active-status">Active</p>
+    </div>
+</div>
+
+            <p class="status">
+                <span class="dot"></span>
+                Camera feed
+            </p>
+        </section>
+
+        <section class="info-card">
+            <h2>About the System</h2>
+            <p>
+                This system uses a YOLO deep learning model to
+                detect objects in real time through your webcam.
+            </p>
+
+            <h3>Features</h3>
+            <ul>
+                <li>Live webcam detection</li>
+                <li>Object labels and bounding boxes</li>
+                <li>Confidence scores</li>
+                <li>Multiple object detection</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>Real-Time Object Detection System | MCA Project</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
